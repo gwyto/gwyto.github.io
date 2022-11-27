@@ -1,0 +1,58 @@
+<html>
+<head>
+<title>Bike Order Form</title>
+<h1>Order Custom Bicycles</h1>
+<script>
+	
+	function calcBikes()
+	{
+		base = parseInt(document.getElementById('base').value);
+		inter = parseInt(document.getElementById('inter').value);
+		pro = parseInt(document.getElementById('pro').value);
+
+
+		subtotal = base * 699.99 + inter * 899.99 + pro * 1099.99
+		tax = subtotal * 0.065;
+		total = subtotal + tax;
+
+		document.getElementById('sum').value = tax.toFixed(2);
+		document.getElementById('total').value = total.toFixed(2);	
+	}
+
+</script>
+
+</head>
+
+<body>
+
+<form>
+
+Base Model - $699.99 <br> <input type="text" value="0" id="base" />
+<br />
+Intermediate Model - 899.99 <br> <input type="text" value="0" id="inter" />
+<br />
+Pro Model - 1099.99 <br> <input type="text" value="0" id="pro" />
+
+<br />
+<br />
+
+<input type="button" id="btnAdd" value="Calculate" 
+	onclick="calcBikes();"/>
+
+<br />
+<br />
+
+Tax: $<input type="text" id="sum" />
+
+<br />
+<br />
+
+Total: $<input type="text" id="total" />
+
+<br />
+
+</form>
+
+</body>
+
+</html>
