@@ -1,7 +1,11 @@
 <html>
-<head>
-<title>Bike Order Form</title>
-<h1>Order Custom Bicycles</h1>
+
+    <head>
+
+      <title>
+      Gabe's BMX - Order Page
+      </title>
+
 <script>
 	
 	function calcBikes()
@@ -9,23 +13,83 @@
 		base = parseInt(document.getElementById('base').value);
 		inter = parseInt(document.getElementById('inter').value);
 		pro = parseInt(document.getElementById('pro').value);
+		disc = 0;
+
+		subtotal = base * 699.99 + inter * 899.99 + pro * 1099.99;
+		
+		if (base + inter + pro === 2) {
+		
+		disc = subtotal * 0.05;
+
+		subtotal = subtotal - disc;
+		
+		} else if (base + inter + pro >= 5) {
+		
+		disc = subtotal * 0.15;
+
+		subtotal = subtotal - disc;
+		
+		} else if (base + inter + pro >= 3) {
+		
+		disc = subtotal * 0.1;
+
+		subtotal = subtotal - disc;
+		
+		}
 
 
-		subtotal = base * 699.99 + inter * 899.99 + pro * 1099.99
 		tax = subtotal * 0.065;
 		total = subtotal + tax;
 
+		document.getElementById('discount').value = disc.toFixed(2);
 		document.getElementById('sum').value = tax.toFixed(2);
 		document.getElementById('total').value = total.toFixed(2);	
 	}
 
+	function alerBoxFunc() {
+
+		alert("Order Complete!!");
+
+	}
+
 </script>
 
-</head>
+
+      <link rel="stylesheet" href="styles.css">
+
+  </head>
 
 <body>
 
+  <h1>
+
+    Gabe's BMX
+
+  </h1>
+
+  <h3>
+
+    <a href="https://gwyto.github.io/index.html">HOME</a> &nbsp &nbsp &nbsp
+    <a href="https://gwyto.github.io/bmxhistory.html">BMX HISTORY</a> &nbsp &nbsp &nbsp
+    <a href="https://gwyto.github.io/howto.html">HOW TO BUNNYHOP</a> &nbsp &nbsp &nbsp
+    <a href="https://gwyto.github.io/bikeorderform.html">ORDER A CUSTOM BIKE</a> &nbsp &nbsp &nbsp
+    <a href="https://gwyto.github.io/popularlinks.html">POPULAR LINKS</a>
+
+  </h3>
+
+<h2>Order Custom Bicycles</h2>
+
 <form>
+
+<pre>
+	<b>
+	Buy More, Save More Discounts: 
+						2 bikes = 5%
+						3 bikes  = 10%
+						5+ bikes = 15%
+
+        </b>
+</pre>
 
 Base Model - $699.99 <br> <input type="text" value="0" id="base" />
 <br />
@@ -47,9 +111,18 @@ Tax: $<input type="text" id="sum" />
 <br />
 <br />
 
+Discount: $<input type="text" id="discount" />
+
+<br />
+<br />
+
 Total: $<input type="text" id="total" />
 
 <br />
+<br />
+
+<input type="button" id="btnAdd" value="Order" 
+	onclick="alerBoxFunc();"/>
 
 </form>
 
